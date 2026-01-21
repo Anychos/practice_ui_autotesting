@@ -18,7 +18,7 @@ class RegistrationForm(BaseComponent):
         return self.page.locator("section.fieldset h2.title").nth(index)
 
     def input_name(self, label: str) -> Locator:
-        return self.page.get_by_label(label)
+        return self.page.locator(f"label[for={label}]")
 
     def input(self, element_id: str) -> Locator:
         return self.page.locator(f"input#{element_id}")

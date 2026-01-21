@@ -24,10 +24,10 @@ class LoginForm(BaseComponent):
         return self.page.locator("div.customer-blocks h2.title").nth(index)
 
     def input_name(self, label: str) -> Locator:
-        return self.page.get_by_label(label)
+        return self.page.locator(f"label[for={label}]")
 
     def input(self, element_id: str) -> Locator:
-        return self.page.locator(f"input.{element_id}")
+        return self.page.locator(f"input#{element_id}")
 
     def check_visibility(self) -> None:
         expect(self.fieldset_title(0)).to_be_visible()
@@ -71,6 +71,7 @@ class LoginForm(BaseComponent):
         expect(self.input("Password")).to_have_value(password)
 
         if remember_me:
+            expect(self.remember_me_checkbox).to_be_visible()
             self.remember_me_checkbox.check()
             expect(self.remember_me_checkbox).to_be_checked()
 

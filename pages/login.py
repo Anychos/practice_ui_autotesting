@@ -1,9 +1,9 @@
 from playwright.sync_api import Page, expect
 
+from components.footer import Footer
 from components.header import Header
 from components.login_form import LoginForm
 from pages.base_page import BasePage
-from components.footer import Footer
 
 
 class LoginPage(BasePage):

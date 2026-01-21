@@ -1,4 +1,5 @@
 from playwright.sync_api import Page, expect, Locator
+
 from components.base_component import BaseComponent
 
 
@@ -12,12 +13,12 @@ class Footer(BaseComponent):
     def __init__(self, page: Page):
         super().__init__(page)
 
-        self.social_block = self.page.locator("div.social")
-        self.social_block_title = self.social_block.locator("h2")
-        self.social_block_link = self.social_block.locator("a").first
+        self.follow_us_block = self.page.locator("div.social")
+        self.follow_us_title = self.follow_us_block.locator("h2")
+        self.follow_us_link = self.follow_us_block.locator("a").first
 
         self.newsletter_block = self.page.locator("div.newsletter")
-        self.newsletter_block_title = self.newsletter_block.locator("h2")
+        self.newsletter_title = self.newsletter_block.locator("h2")
         self.email_input = self.page.locator("input#newsletter-email")
         self.subscribe_button = self.page.locator("button#newsletter-subscribe-button")
 
@@ -43,10 +44,10 @@ class Footer(BaseComponent):
         expect(self.navigation_menu_title(2)).to_be_visible()
         expect(self.menu_link(2)).to_be_visible()
 
-        expect(self.social_block_title).to_be_visible()
-        expect(self.social_block_link).to_be_visible()
+        expect(self.follow_us_title).to_be_visible()
+        expect(self.follow_us_link).to_be_visible()
 
-        expect(self.newsletter_block_title).to_be_visible()
+        expect(self.newsletter_title).to_be_visible()
         expect(self.email_input).to_be_visible()
         expect(self.subscribe_button).to_be_visible()
 
@@ -58,8 +59,8 @@ class Footer(BaseComponent):
         self.menu_link(index).click()
 
     def click_social_link(self):
-        expect(self.social_block_link).to_be_visible()
-        self.social_block_link.click()
+        expect(self.follow_us_link).to_be_visible()
+        self.follow_us_link.click()
 
     def fill_newsletter_email(self, email: str):
         expect(self.email_input).to_be_editable()

@@ -11,7 +11,7 @@ class BasePage:
     def __init__(self, page: Page):
         self.page = page
 
-    def open_page(self, url) -> None:
+    def open_page(self, url: str) -> None:
         self.page.goto(url, wait_until="domcontentloaded")
 
     def reload_page(self) -> None:
