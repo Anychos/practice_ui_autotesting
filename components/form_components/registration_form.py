@@ -14,6 +14,8 @@ class RegistrationForm(BaseComponent):
     def __init__(self, page: Page):
         super().__init__(page)
 
+        self.registration_button = self.page.locator("button#register-button")
+
     def fieldset_title(self, index: int) -> Locator:
         return self.page.locator("section.fieldset h2.title").nth(index)
 
@@ -60,6 +62,8 @@ class RegistrationForm(BaseComponent):
         expect(self.input("ConfirmPassword")).to_be_visible()
         expect(self.required_field_mark(4)).to_be_visible()
 
+        expect(self.registration_button).to_be_visible()
+
     def fill_form(self,
                   *,
                   first_name: str,
@@ -100,3 +104,7 @@ class RegistrationForm(BaseComponent):
             expect(self.radio_button("gender-male")).to_be_visible()
             self.radio_button("gender-male").check()
             expect(self.radio_button("gender-male")).to_be_checked()
+
+    def click_registration_button(self) -> None:
+        expect(self.registration_button).to_be_enabled()
+        self.registration_button.click()

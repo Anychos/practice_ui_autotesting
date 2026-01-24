@@ -53,10 +53,11 @@ def get_browser_state(playwright: Playwright) -> None:
 
 
 @pytest.fixture
-def open_chromium_page_with_state(playwright: Playwright) -> Page:
+def open_chromium_page_with_state(get_browser_state, playwright: Playwright) -> Page:
     """
     Запускает Chromium браузер и открывает страницу приложения с сохраненным состоянием
 
+    :param get_browser_state: Функция, создающая и сохраняющая состояние браузера
     :param playwright: Экземпляр Playwright, предоставляемый pytest-playwright
     :return: Объект Page для взаимодействия со страницей
     """

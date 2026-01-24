@@ -21,6 +21,7 @@ class Footer(BaseComponent):
         self.newsletter_title = self.newsletter_block.locator("h2")
         self.email_input = self.page.locator("input#newsletter-email")
         self.subscribe_button = self.page.locator("button#newsletter-subscribe-button")
+        self.subscribe_success_message = self.page.locator("div#newsletter-result-block")
 
         self.powered_by_text = self.page.locator("div.footer-powered-by")
         self.copyright_text = self.page.locator("span.footer-disclaimer")
@@ -70,3 +71,6 @@ class Footer(BaseComponent):
     def click_subscribe_button(self):
         expect(self.subscribe_button).to_be_visible()
         self.subscribe_button.click()
+
+    def check_subscribe_success_message(self):
+        expect(self.subscribe_success_message).to_be_visible()

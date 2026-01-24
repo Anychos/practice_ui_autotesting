@@ -1,4 +1,4 @@
-from playwright.sync_api import Page, Locator, expect
+from playwright.sync_api import Page, expect
 
 from components.base_component import BaseComponent
 
@@ -13,6 +13,7 @@ class NewsCard(BaseComponent):
 
         self.root = page.locator("article.news-item").nth(index)
         self.title = self.root.locator("h3")
+        self.title_link = self.root.locator("a.news-title")
         self.public_date = self.root.locator("time.news-date")
         self.text_preview = self.root.locator("section.news-body")
         self.details_button = self.root.locator("a.read-more")

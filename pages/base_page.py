@@ -1,4 +1,4 @@
-from playwright.sync_api import Page
+from playwright.sync_api import Page, expect
 
 
 class BasePage:
@@ -16,3 +16,6 @@ class BasePage:
 
     def reload_page(self) -> None:
         self.page.reload()
+
+    def check_current_url(self, expected_url: str) -> None:
+        expect(self.page).to_have_url(expected_url)

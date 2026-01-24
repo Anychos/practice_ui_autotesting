@@ -1,4 +1,4 @@
-from playwright.sync_api import Page, Locator, expect
+from playwright.sync_api import Page, expect
 
 from components.base_component import BaseComponent
 
@@ -12,6 +12,7 @@ class CategoryCard(BaseComponent):
         super().__init__(page)
 
         self.root = page.locator("article.item-box").nth(index)
+        self.root_href = self.root.locator("a").first
         self.title = self.root.locator("h2")
         self.image = self.root.locator("div.picture")
 

@@ -1,4 +1,4 @@
-from playwright.sync_api import Page, Locator, expect
+from playwright.sync_api import Page, expect
 
 from components.base_component import BaseComponent
 
@@ -8,12 +8,13 @@ class FeaturedProductCard(BaseComponent):
     Компонент карточки рекомендуемого товара на главной странице
     """
 
-    def __init__(self, page: Page, index: int = 0):
+    def __init__(self, page: Page, index: int = 2):
         super().__init__(page)
 
         self.root = page.locator("div.item-box").nth(index)
         self.image = self.root.locator("div.picture")
-        self.title = self.root.locator("h2")
+        self.image_href = self.image.locator("a")
+        self.title = self.root.locator("h2 a")
         self.rating = self.root.locator("div.rating")
         self.actual_price = self.root.locator("span.actual-price")
         self.add_to_cart_button = self.root.locator("button.product-box-add-to-cart-button")

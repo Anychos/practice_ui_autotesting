@@ -1,8 +1,8 @@
 import pytest
 from playwright.sync_api import Page
 
+from pages.home import MainPage
 from pages.login import LoginPage
-from pages.main import MainPage
 from pages.registartion import RegistrationPage
 
 
